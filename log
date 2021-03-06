@@ -1,0 +1,13 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  libraspberrypi-bin libraspberrypi-dev libraspberrypi-doc libraspberrypi0
+  raspberrypi-bootloader raspberrypi-kernel
+6 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 116 MB of archives.
+After this operation, 1,243 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Get:1 http://archive.raspberrypi.org/debian buster/main armhf libraspberrypi-doc armhf 1.20210303-1 [31.4 MB]
+Get:2 http://archive.raspberrypi.org/debian buster/main armhf libraspberrypi-dev armhf 1.20210303-1 [399 kB]
+Get:3 http://archive.raspberrypi.org/debian buster/main armhf raspberrypi-kernel armhf 1.20210303-1 [78.9 MB]
