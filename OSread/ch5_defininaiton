@@ -1,0 +1,15 @@
+1. concurrency: cpu switches among processes
+2. parallel: process distributed among cpus ( mutil core) 
+3. race condition: concurrent ps access the same variable in unpredictable manner due to speed and other reason. 
+4. critical section: a section that can only be accessed by single process/thread, for both single core and mutiple core system. 
+5. mutual exclusion: if process p is in this critical section, then no other ps can enter it. 
+6. progess: 
+	" only htoes ps that are not in their remainder sections can paritcipate in the decising which will enter its critical section next ..."
+	" if no ps its in its (A)  critical section, the reuqest ps B can not be postponed indefinitely " 
+7. bounded wait:  ?
+8. preemptive: 
+	OS to interrupt current task 
+	based on higer priority
+	normally caused by privilleged task
+	or preemptive scheduler 
+

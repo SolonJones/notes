@@ -1,0 +1,41 @@
+section 1 : 
+index of key words:
+software solution: 3
+hardware solution: 3 
+concurrency: 4
+parallelism: 4
+bounded buffer solution: 5 
+producer-consumer solution: 7
+counter: 10
+critical section problem: 11 
+mutual exclution: 13
+progress: 13
+bounded waits: 13 
+relative speed : 13 
+preemptive: 14
+non-preemptive: 14 
+kenel mode process: 14
+peteron's solution: 15 
+locking: 15
+uniprocssor disalbe interupt: 15
+atomic: 15
+test_and_set(): 15
+compare_and_swap(): 15
+non interruptible unit: 17
+mutiple core with shared lock: 18
+mutex: 22
+busy waiting : 22 
+spinlock: 22 
+semaphores: 24 
+synch: 25 
+semaphore without busy waiting: 27
+block, wake up: 27 
+deadlock,starvation priority inversion : 29
+boundered buffer, readeer and writer, ding-philosopher: 30 
+adaptive mutexes, coniditon var, turntiles: 43 
+monitor: 43
+spinlock, dispatcher, singaled state: 44
+
+
+
+Wed 10 Mar 2021 04:12:37 PM EST
