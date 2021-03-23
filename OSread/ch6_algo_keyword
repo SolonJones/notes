@@ -1,0 +1,200 @@
+Basic Concepts!
+
+mutil-program os system 
+ps sch
+thread sch 
+idle cpu 
+burst cycle 
+cpu burst  / io burst 
+cpu burst distribiton 
+ps states : new ready runing terminted waiting 
+ps state chg: admitted, interupt exit, sch dispatch, io wait, io completeion 
+
+short term shcediler 
+ready queue 
+fifo: first in first out 
+lifo : last in first out 
+random : 
+priority :
+
+nonpreemptive swithch timeing: running-waiting, runing-ready, waiting-ready, terminate 
+preemptive scheduling: shared data, kernel sch, os interupt etc.. 
+- race condition 
+
+
+dispachter module: 
+switching contex 
+mode switches 
+location jump 
+
+dispatch latency: special ps that stop one ps and start another 
+save the old state
+load the old state 
+pcb:
+process state: register value , mem info ... etc 
+overhead 
+cpu-register sets 
+
+
+
+Scheduling Criteria !
+
+optimization criteria: 
+cpu utilization 
+throughtput 
+turnaround time
+waiting time 
+reponse time 
+
+
+
+
+Scheduling Algorithms!
+fcfs: first come first server 
+gantt chart 
+convoy effeect 
+nonepreemptive 
+
+sjf: shoetest job first 
+next cpu burst 
+sncb: shortest next cpu burst scheduling 
+job scheduling 
+not at the level of short term cpu schduling 
+next = ave(all pst)
+next - ave ( measured time + estimated time) 
+b_n+1= a * t_n + (1-a)b_n
+
+b_n estimate time at n'th term 
+a weight 
+t_n actual time at nth term 
+-> this formula can be expaneded all the way down to t_0 
+
+
+srtf: shortest remianing time first 
+preemptive version of above 
+
+
+
+priority scheduling:
+integer as priority
+smallest int = highest priority
+os assinged 
+user assigned 
+
+
+preemptive: a rungin ps is preemptied by a new/higher priority ps 
+nonpreemptive: runign ps hold cpu until terminate or end of request 
+
+sjf is a form of priority schduling 
+starvation
+aging 
+
+round robin:
+time quantum/slice 
+preemptive 
+circular queue 
+
+
+ready queue-multilevel queue 
+foreground ps 
+background ps 
+permenently associate 
+queue define algo 
+
+queue schedule algo: 
+fixed priority
+time slice 
+
+multilevel feedback queue
+ps shift bewteen queue 
+
+
+
+
+Thread Scheduling!
+
+kevel vs user 
+many to one 
+many to many model 
+thread libary scheduler 
+process contention scope: pcs
+system contention scope : scs 
+ptheread_scope_process vs pthread_scope_system 
+linux allowed system only 
+
+
+
+
+Multiple-Processor Scheduling!
+
+
+
+
+Real-Time CPU Scheduling!
+RT real time 
+soft real time system
+hard real time system 
+event latenvy 
+interupt latenvy 
+dispatch lantency 
+confilic phase 
+
+
+priority based rt shcduling 
+preemptive 
+???
+
+
+tate monotonic sheduling
+static priotiy policy
+
+missed deadline wirh rate monotonic schduling 
+
+
+earliest dealine first scheduling edf
+
+proportional share schdduling 
+admission contorl policy 
+posix rt stadnard 
+
+
+
+
+
+Operating Systems Examples!
+linux 
+
+premeptive 
+prioritybased 
+time sharing / real time 
+global priority 
+ative epried arrays 
+tasks index 
+
+cfs: complete fair scheduler 
+target latenvy 
+vurturla run time 
+
+windows 
+priority based preemptibe 
+dispacher 
+priority queue 
+usermode schduling ums 
+concurrent runtime 
+
+
+
+solaris 
+time shareing ts 
+interactive ia 
+real time rt 
+sytem sys 
+faire share fss 
+fixed priority 
+
+
+
+
+
+
+Algorithm Evaluation

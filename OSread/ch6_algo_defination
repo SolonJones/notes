@@ -1,0 +1,67 @@
+basic concepts: 
+
+1. what is schduler 
+	scheduler is the ps which detetmines which residental ps get cpu time. 
+	it the basic component for multiprogram os. 
+	it originate in kernle mode, inside os. 
+	then expanded to user mode, and extended from ps scheduler to thread scheduler. 
+
+
+2. cpu brust, idle, distribution : 
+	when a ps is runing calculation, code it is called cpu brust, 
+	when it is interactive with the user, fetching for memeroy, or any disk operation, its counted as idle time. 
+	when more ps is involved, many cpu brust/idle is calculated, we call it cpu brust distribution 
+
+
+3. 5 ps state 
+	when a ps is running, it has a running state
+	when a ps is io bound, it is io waiting 
+	when a ps is newly loaded, it is in new 
+	when a ps is done with io ops or other pause, it is io ready 
+	when a ps is done, it is in terminate state 
+
+	generally there are 5 states 
+
+4. 6 change states 
+	to make thing complicated, each chg of states was also named: 
+	new -> ready : admmit 
+	ready -> run : interrupt 
+	run -> ready : dispatch  
+	run -> wait : io/event 
+	wait -> ready : io/e complete  
+	run -> terminate : exit 
+	
+5. admit: 
+	load program from disk to cache, aka ready queue 	
+6. interupt: 
+ 	push running ps onto ps stack, move to ready que
+7. dispatch: 
+	then load ps from ready queue to cpu
+
+? diff between interupt and dispatch
+	which is load which is swich  
+
+8. short term scheduler: 
+	algo managing ps order inside ready queue 
+9. ready queue:
+	only one ps can use the cpu : brust 
+	only one in use of bus for io: waiting (maybe many bus....)
+	the rest in the ready queue : ready  
+
+10. algo for ready queue:
+	fifo
+	lifo
+	random
+	priority
+
+11. non preemptive switching:
+	scheduling occured only under 2 circumstance:
+	1. runing to wait : io/e
+	4. terminate 
+	
+	sum: a ps run from beg to end unless io/e occured 
+
+12. preemptive switch: 
+	
+13. race condition: 
+	shared date: when 2 ps try to access same var in memeroy/disk 
