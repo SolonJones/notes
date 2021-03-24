@@ -12,3 +12,23 @@ save github credential
 git config crediential.helper store
 git pull 
 
+
+---------------
+stop gui and gdm from boot 
+sudo systemctl set-default multi-user.target
+
+restart gui and gdm on boot 
+sudo systemctl set-default graphical.target
+
+launch gdm from cli ( tty )
+sudo systemctl start gdm3.service 
+
+launch x window without gdm and session manager 
+startx 
+
+to stop a x window, simply logout 
+to stop a gdm from runing, use 
+sudo systemctl stop gdm3.service 
+the only problem is current ttyX after logout will be un-usable and must change tty by using ctl+alt+ Fx(1,2,3...) 
+
+
