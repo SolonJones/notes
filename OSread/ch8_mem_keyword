@@ -1,0 +1,216 @@
+ps share main mem 
+
+org meme hardware 
+
+mem management tech 
+
+pure segmentation 
+
+paging 
+
+
+program -> main mem -> register -> cpu 
+
+stall 
+
+cache 
+
+base 
+
+limit register 
+
+add blinding 
+
+input queue 
+
+linker 
+
+loader 
+
+mapping 
+
+absolute code 
+
+reloactabel code 
+
+final bidung 
+
+logical addr space 
+ 
+physical addr space 
+
+mem unit 
+
+meme addr resigeter 
+
+virtual addre
+
+
+mem meanagement unut mmu
+
+
+relocation registeer 
+
+dynamic relocatio 
+
+uroutinr 
+
+dunmaiclaly linked lib 
+
+static link 
+
+stub 
+
+share lib 
+
+
+swapping 
+
+back sotre
+ 
+back store 
+
+ready queue 
+
+transfer rate 
+
+swap out / in 
+
+comp;ete idel 
+
+flash mem 
+
+presisten storage 
+
+application state 
+
+contituous allocation 
+
+paritions 
+
+interupt vector 
+
+dispacher 
+
+transient 
+
+fixed size paritions 
+
+better 
+
+hole 
+
+job scheduling 
+
+gragmentation 
+
+external fragm 
+
+internal fragm 
+
+compaction 
+
+latch job 
+
+paging 
+
+grame 
+
+pages 
+
+page table 
+
+translation scheme 
+
+page number p 
+page offset d 
+
+page table base register  ptbr 
+
+page table lenth register  ptlr 
+
+pcb ?
+
+fast lookup hardware cache 
+
+associative memeey 
+
+translation llok aside byffer TLBs 
+
+
+parallel search 
+
+tlb miss 
+
+
+lru leasr recentyty used replacement algorith
+
+RR round robin repalce  algo 
+
+rnadom replacement algo 
+
+wired down 
+
+address space identififer ASid 
+
+eat effective mem access time 
+
+hit time 
+
+miss time 
+
+hit ratio 
+
+
+
+valid invalid bit on ptlr 
+
+
+shared pages 
+
+
+shared code 
+
+reentrant 
+
+structure of page table 
+
+hierachical paging 
+
+hashed page table 
+
+iverted page table 
+
+
+tow level paging algo 
+
+outer 
+
+inner 
+
+forward mapped page table 
+
+three leel paging shcme 
+
+collision handing 
+
+
+clustered page table 
+
+sparse 
+
+frame table 
+
+tlb ? 
+
+oracle sparc 
+
+tte translation table entries 
+
+tsb translation storage buffer 
+
+pae page address etension 
+
+page directory pointer table 
+
+

@@ -1,0 +1,94 @@
+# this is the summary of chapter 8 
+
+quesiton: how to stuff several ps inside main memory 
+
+
+backgroud 
+	relationship with cpu and memory 
+		cpu fetch instruciton & operands from mainmemory(inaccurate) RAM
+		only RAM and Reg can be access by cpu 
+		Reg access take on cpu cycle
+		RAM access take many cpu cycle, stall 
+		Cache help improve stall problem
+		hardware level mem protection 	
+	base register & limit register 
+		ps division: a ps is divided into different sections; text, data, stack, heap, env
+		base:
+		1 smallest legal physical mem address of the ps 
+
+		2 also mean the smallest legal phycial address of each section. the usage is somewhat less scientific. 
+		3 the text book then state the bx is the all base, imply that text section is the base of all. 
+		limit: range of accessible addresses 
+		base+limit protect mem space 
+		only kernel can access base/limit 
+
+swapping 
+contiguous memory allocaiton 
+segmentation 
+paging 
+page table 
+
+
+
+------------------
+draft 
+
+several ps co-reside inside RAM
+
+on exe instr is moved from RAM to reg and used by cpu 
+
+reg which exclusively deal with mem is called memeroy unit
+
+cache + ram = phy addr 
+
+mem unit is very simple in concept: addr + data to r/w 
+
+reg - 1 clock cycle/tick
+cache - 3 clock 
+RAM - 5+ clock tick - stall 
+
+physical addr - id on RAM physically 
+
+logical addr - generate by ps, may or may not identical to physical addr 
+
+base + limit  = logical addr range 
+
+base: 
+	1. value stored in base register/point 
+	2. start of text/code section of program 
+	3. smallest phy addr id value 
+	4. smallest log addr id value ( phy == log) 
+limit: 
+	1. max offset of log addr 
+	2. range of accessible addr 
+
+? how was user vs kernel mem fit in this picture
+
+input queue
+	the part of program still in disk was put inside a job/input queue 
+	the part that is in RAM is ps 
+
+address from disk-RAM-cache-reg
+	1.when program is not yet complied, the var/addr is only in symbolic form 
+	2.when the program is complied, complier translate the symbolic addr into a relative addr, and keep unknown addr still in symbolic way 
+	3.then linker link the relative addr of the program into absolute addr according to other object realted by searching the ( to its best ability) for location of sub-lib/obj
+	4.loader then consolidate the complied/linked binary with system lib and attempt to translate most of the addr into absolute addr. 
+	5.the run-time lib is finally combined when the ps is scheduled to run. 
+	6.now the abstract addr from source code became RAM addr space 
+
+? how did virtual mem fit into this picture 
+? addr binding page 8 
+
+phy == log addr
+	during 1-4 stage of the complie/link/load, phy==log
+
+? run time lib made them different 
+
+MMU memory management unit 
+	hardware devide 
+	specialize on mapping virtual mem ( log that diffs) to physical addr 
+
+
+
+
+
