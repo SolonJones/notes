@@ -1,0 +1,46 @@
+draft1.cpp: In function ‘int main()’:
+draft1.cpp:50:16: error: ‘readin_t’ was not declared in this scope
+         cin >> readin_t;
+                ^~~~~~~~
+draft1.cpp:50:16: note: suggested alternative: ‘rewind’
+         cin >> readin_t;
+                ^~~~~~~~
+                rewind
+draft1.cpp:51:16: error: ‘high_resolution_clock’ has not been declared
+         cur_t =high_resolution_clock::now();
+                ^~~~~~~~~~~~~~~~~~~~~
+draft1.cpp:52:51: error: no matching function for call to ‘std::queue<process>::push(<brace-enclosed initializer list>)’
+         working.push({readin_t,0,readin_t,cur_t,0});
+                                                   ^
+In file included from /usr/include/c++/8/queue:64,
+                 from draft1.cpp:2:
+/usr/include/c++/8/bits/stl_queue.h:251:7: note: candidate: ‘void std::queue<_Tp, _Sequence>::push(const value_type&) [with _Tp = process; _Sequence = std::deque<process, std::allocator<process> >; std::queue<_Tp, _Sequence>::value_type = process]’
+       push(const value_type& __x)
+       ^~~~
+/usr/include/c++/8/bits/stl_queue.h:251:7: note:   no known conversion for argument 1 from ‘<brace-enclosed initializer list>’ to ‘const value_type&’ {aka ‘const process&’}
+/usr/include/c++/8/bits/stl_queue.h:256:7: note: candidate: ‘void std::queue<_Tp, _Sequence>::push(std::queue<_Tp, _Sequence>::value_type&&) [with _Tp = process; _Sequence = std::deque<process, std::allocator<process> >; std::queue<_Tp, _Sequence>::value_type = process]’
+       push(value_type&& __x)
+       ^~~~
+/usr/include/c++/8/bits/stl_queue.h:256:7: note:   no known conversion for argument 1 from ‘<brace-enclosed initializer list>’ to ‘std::queue<process>::value_type&&’ {aka ‘process&&’}
+draft1.cpp:9:14: error: expected unqualified-id before numeric constant
+ #define test 1
+              ^
+draft1.cpp:56:24: note: in expansion of macro ‘test’
+         struct process test;
+                        ^~~~
+draft1.cpp:58:28: error: lvalue required as left operand of assignment
+         test = working.pop();
+                            ^
+draft1.cpp:60:26: error: no matching function for call to ‘std::queue<process>::push(int)’
+         working.push(test);
+                          ^
+In file included from /usr/include/c++/8/queue:64,
+                 from draft1.cpp:2:
+/usr/include/c++/8/bits/stl_queue.h:251:7: note: candidate: ‘void std::queue<_Tp, _Sequence>::push(const value_type&) [with _Tp = process; _Sequence = std::deque<process, std::allocator<process> >; std::queue<_Tp, _Sequence>::value_type = process]’
+       push(const value_type& __x)
+       ^~~~
+/usr/include/c++/8/bits/stl_queue.h:251:7: note:   no known conversion for argument 1 from ‘int’ to ‘const value_type&’ {aka ‘const process&’}
+/usr/include/c++/8/bits/stl_queue.h:256:7: note: candidate: ‘void std::queue<_Tp, _Sequence>::push(std::queue<_Tp, _Sequence>::value_type&&) [with _Tp = process; _Sequence = std::deque<process, std::allocator<process> >; std::queue<_Tp, _Sequence>::value_type = process]’
+       push(value_type&& __x)
+       ^~~~
+/usr/include/c++/8/bits/stl_queue.h:256:7: note:   no known conversion for argument 1 from ‘int’ to ‘std::queue<process>::value_type&&’ {aka ‘process&&’}
