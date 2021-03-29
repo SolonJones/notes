@@ -21,7 +21,7 @@ struct Process{
 
 // the algo that mimic ps schduler
 void rrobin();
-void cpu();
+void cpu(Process, int *);
 
 //step 0 prep for the queue 
 Process workingQ[MAX];
@@ -69,27 +69,56 @@ int main(){
     return 0;
 }
 
-void rrobin(){
-    // while the wokringQ still have ps the scheduler continues
-    while( size > 0  ) {
-        // cpu update rmnd_t, cmpt_t  
-        // if rmnd_t is 0 cpu will notify 
-        // 
-        cpu(workingQ[wk_front]);
-        // update all other process wait time 
-        for(int i = wk_front+1; wk_end; i++){
-            workingQ[i].wait_t+=quant;
-        }
+void updateQ(){
+	workingQ[++wk_end] = workingQ[wk_front++];
 
-    }
+    if( test ==1){
+        cout<<"front update to" << wk_front<< endl;
+        cout<<"back update to" << wk_end << endl;}
+
+ 
 }
-    //step2 call algo to process the queue 
-    // rrobin check the queue is not empty
-    // rrobin pop the front process
-    // rrobin call cpu() to process 
-    // cpu check if quant <= rema 
-    // no: comp += rema; rema =0; call time_t measure end time; push process onto finish queue
-    // yes: comp+=quant; rema-=quant; push proces back to queue 
-    // rrobin repeat until the queue is empty
+void rrobin(){
+	// while the wokringQ still have ps the scheduler continues
+	while( size > 0  ) {
+		// set timer for each burst 
+		int timer = Q; 
+		while(timer > 0){
+			// when still have timer left, let cpu working with the front of the queue 
+			cpu(workingQ[wk_front], &timer);
+			if( timer <= 0){
+				break;
+			}
+			else{
+				// cpu will mark the complete ps to complete queue 
+				// update front only 
+				wk_front++;
+			}
+
+		}
+		// when current timer has been used all updateQ 
+		updateQ();
+	}
+}
+
+void cpu(Process p, int* t){
+	
+}
 
 
+
+/*************below here is only for reference ***********/
+
+
+//step2 call algo to process the queue 
+// rrobin check the queue is not empty
+// rrobin pop the front process
+// rrobin call cpu() to process 
+// cpu check if quant <= rema 
+// no: comp += rema; rema =0; call time_t measure end time; push process onto finish queue
+// yes: comp+=quant; rema-=quant; push proces back to queue 
+// rrobin repeat until the queue is empty
+
+
+
+/* the timer is 4, ps1 have only 1 sec left, ps2 will give the remining 3 sec of execution. after current burst, we assume ps2 wilr * */ 
