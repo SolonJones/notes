@@ -1,12 +1,12 @@
 
-
+#include<algorithm>
 #include<queue>
 #include<iostream>
 
 using namespace std;
 
 #define MAX 1000
-#define Q 5
+#define Q 4
 #define test 1
 #define pass 0
 /* 
@@ -32,6 +32,7 @@ Process workingQ[MAX];
 Process finishQ[MAX];
 
 int size, wk_end, wk_front, cp_end, cp_front;
+bool vul = false;
 
 int main(){
 
@@ -188,6 +189,9 @@ void cpu(int* t){
 	// this must occured after t updated but before workingQ order changed 
 	Process run = workingQ[wk_front];	
 	if(run.rmnd_t == *t){
+		for(int i = wk_front+1;i<=wk_end;i++){
+			workingQ[i].wait_t+=(min(run.rmnd_t, *t));
+		}
 		// use all the time and 
 		// run finished 
 		// set timer to zero
@@ -198,29 +202,41 @@ void cpu(int* t){
 		*t = 0;
 		workingQ[wk_front] = run;
 
-		for(int i = wk_front+1;i<=wk_end;i++){
-			workingQ[i].wait_t+=(Q-*t);
-		}
 
+
+		if( pass ==1){print(workingQ[wk_front]);}
 		move_to_finish();
 	}
 	else if(run.rmnd_t < *t){
+
+		for(int i = wk_front+1;i<=wk_end;i++){
+			//
+			workingQ[i].wait_t+=(min(run.rmnd_t, *t));
+		}
+
+
 		// not used up all the time 
 		// run finshed, 
 		// reduce timer
 		// update wk_front mv to cpQ
 		// mv_to_fin automatically update wk_front, cp_end, and size 
 		*t -=run.rmnd_t;
-		run.cmpt_t += rmnd_t;
+		run.cmpt_t += run.rmnd_t;
 		run.rmnd_t=0;
+		workingQ[wk_front] = run;
 
-		for(int i = wk_front+1;i<=wk_end;i++){
-			workingQ[i].wait_t+=(Q-*t);
-		}
-
+		vul=true;
 		move_to_finish();
 	}
 	else{
+
+		// update wait time for the rest ps 
+		for(int i = wk_front+1;i<=wk_end;i++){
+			//
+			workingQ[i].wait_t+=(min(run.rmnd_t, *t));
+		}
+
+		// update cur ps 
 		// used all the time 
 		// run will not be finshed 
 		// set timer to zero
@@ -231,13 +247,13 @@ void cpu(int* t){
 
 		workingQ[wk_front] = run;
 		/* can not make update wait time compressed, must repeat 3 times in each case */
-
-		for(int i = wk_front+1;i<=wk_end;i++){
-			workingQ[i].wait_t+=(Q-*t);
+		// allow vulentary giveup time 
+		if(vul==false){
+			updateQ();
 		}
-
-
-		updateQ();
+		else{
+			vul=false;
+		}
 	}
 	// not used all the time and not finsihed case does not exist 
 }
