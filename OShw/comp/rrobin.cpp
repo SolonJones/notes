@@ -8,15 +8,16 @@ using namespace std;
 #define MAX 1000
 #define Q 5
 #define test 1
+#define pass 0
 /* 
-if(test ==1){cout<<;}
-*/
+   if(test ==1){cout<<;}
+   */
 
 struct Process{
-    int brst_t;
-    int cmpt_t;
-    int rmnd_t;
-    int wait_t;
+	int brst_t;
+	int cmpt_t;
+	int rmnd_t;
+	int wait_t;
 };
 
 // the algo that mimic ps schduler
@@ -24,77 +25,137 @@ void rrobin();
 void cpu(int *);
 void print(Process p);
 void updateQ();
-void move_to_complete();
+void move_to_finish();
 
 //step 0 prep for the queue 
 Process workingQ[MAX];
-Process compeleteQ[MAX];
+Process finishQ[MAX];
 
-    int size, wk_end, wk_front, cp_end, cp_front;
+int size, wk_end, wk_front, cp_end, cp_front;
 
 int main(){
 
 
-    //step1 read a file as input 
-    // a file contains: num of ps + each burst time 
-    // init a ps_num with num
-    int ps_num; 
-    cin >> ps_num;
-    if(test ==1){cout<<"ps_num good"<< endl;}
-    size = ps_num;
-    int readin_t;
-    int dummy =0;
-    // enter a loop of ps_num
-    // init process value  
-    // burst time = read in value 
-    // comp =0
-    // rema = brust time 
-    // realt = curent time
-    for(int i=0; i<ps_num; i++){
-        cin >> readin_t;
-        workingQ[i].brst_t = readin_t;
-        workingQ[i].cmpt_t = dummy;
-        workingQ[i].rmnd_t = readin_t;
-        workingQ[i].wait_t = dummy;
-    }
+	//step1 read a file as input 
+	// a file contains: num of ps + each burst time 
+	// init a ps_num with num
+	int ps_num; 
+	cin >> ps_num;
+	if(pass ==1){cout<<"ps_num good"<< endl;}
+	size = ps_num;
+	int readin_t;
+	int dummy =0;
+	// enter a loop of ps_num
+	// init process value  
+	// burst time = read in value 
+	// comp =0
+	// rema = brust time 
+	// realt = curent time
+	for(int i=0; i<ps_num; i++){
+		cin >> readin_t;
+		workingQ[i].brst_t = readin_t;
+		workingQ[i].cmpt_t = dummy;
+		workingQ[i].rmnd_t = readin_t;
+		workingQ[i].wait_t = dummy;
+	}
 
-    if( test ==1){
-        for(int i=0; i< ps_num; i++){
-            cout << workingQ[i].brst_t << "\t" ;
-        } 
-        cout<< endl<<"working q good"<< endl;}
+	if( pass ==1){
+		for(int i=0; i< ps_num; i++){
+			cout << workingQ[i].brst_t << "\t" ;
+		} 
+		cout<< endl<<"working q good"<< endl;}
 
-    wk_end = ps_num;
-    int size = ps_num;
+	wk_end = ps_num-1;
 
-    // done with step 1 
-    // test updateQ 
-    if( test ==1){
-	    cout << "wk_front: " << wk_front << endl;
-	    cout << "wk_end: " << wk_end<< endl;
-	    for(int i=0; i< ps_num; i++){
-		    cout << workingQ[i].brst_t << '\t';
-	    } 
-	    updateQ();
-	    cout << "wk_front: " << wk_front << endl;
-	    cout << "wk_end: " << wk_end<< endl;
-	    for(int i=0; i< ps_num; i++){
-		    cout << workingQ[i].brst_t << '\t';
-	    }
-	    cout<<"ps_num good"<< endl;}
+	// done with step 1 
+	// test updateQ 
+	if( pass ==1){
+		for(int i= wk_front; i<=wk_end; i++){
+			cout << workingQ[i].brst_t << '\t';
+		} 
+		cout<<endl;
+		updateQ();
+		for(int i= wk_front; i<=wk_end; i++){
+			cout << workingQ[i].brst_t << '\t';
+		}
+		cout<<endl;
+		updateQ();
+		for(int i= wk_front; i<=wk_end; i++){
+			cout << workingQ[i].brst_t << '\t';
+		}
+
+		cout<<endl;
+		cout<<"updateQ() good"<< endl;}
 
 
-    //step3 report the result 
-    return 0;
+	// testing move to finish  
+	// little issue with cp_end adj
+	if( pass ==1){
+		move_to_finish();
+		cout<< "workingQ:"<< endl;
+		for(int i= wk_front; i<=wk_end; i++){
+			cout << workingQ[i].brst_t << '\t';
+		}
+		cout<< endl;
+		cout<< "finishQ:"<< endl;
+		for(int i= cp_front; i<=cp_end; i++){
+			cout << finishQ[i].brst_t << '\t';
+		}
+		cout<< endl;
+	}
+
+
+	// testing cpu
+	if( pass ==1){
+		cout << "wk front:" << wk_front<< endl;
+		cout << "wk end :" << wk_end<< endl;
+
+		int t = Q;		
+		cpu(&t);
+		for(int i= wk_front; i<=wk_end; i++){
+			print(workingQ[i]);
+		}
+
+		cout << "wk front:" << wk_front<< endl;
+		cout << "wk end :" << wk_end<< endl;
+		cout << "timer left:" << t << endl;
+
+
+	}
+
+	// test rrobin()
+
+	if( test==1){
+		cout << "size : "<< size << endl; 
+
+		cout << "workingQ before rrobin: "<< endl; 
+		for(int i= wk_front; i<=wk_end; i++){
+			print(workingQ[i]);
+		}
+		rrobin();
+		cout << "workingQ after rrobin: "<< endl; 
+		for(int i= wk_front; i<=wk_end; i++){
+			print(workingQ[i]);
+		}
+
+		cout << "finishQ after rrobin: "<< endl; 
+		for(int i= cp_front; i<=cp_end; i++){
+			print(finishQ[i]);
+		}
+
+
+
+	}
+
+	//step3 report the result 
+	return 0;
 }
+
+
+
 
 void updateQ(){
 	workingQ[++wk_end] = workingQ[wk_front++];
-
-	if( test ==1){
-		cout<<"front update to" << wk_front<< endl;
-		cout<<"back update to" << wk_end << endl;}
-
 
 }
 void rrobin(){
@@ -104,68 +165,102 @@ void rrobin(){
 		int timer = Q; 
 		while(timer > 0){
 			// when still have timer left, let cpu working with the front of the queue 
-			cpu(&timer);
-			if( timer <= 0){
-				break;
-			}
-			else{
-				// cpu will mark the complete ps to complete queue 
-				// update front only 
-				wk_front++;
-			}
 
+			if( test ==1){
+				cout << "size:" << size << " timer:" << timer << " front:";
+				for(int i= wk_front; i<=wk_end; i++){
+					print(workingQ[i]);
+				}
+				cout << endl;
+			}
+			cpu(&timer);
+			if(size <=0){break;}
 		}
-		// when current timer has been used all updateQ 
-		updateQ();
 	}
 }
 // cpu only work with the wk_front of the working Q 
-// cpu will remove wk_front it to complete if its rmnd_t is zero 
+// cpu will remove wk_front it to finish if its rmnd_t is zero 
 void cpu(int* t){
-	Process run = workingQ[wk_front];	
-	if(run.rmnd_t = *t){
-		// run finished 
-		// set timer to zero
-		// update wk_front, mv to cpQ
-		run.rmnd_t -= *t;
-		*t = 0;
-		move_to_complete();
-	}
-	else if(run.rmnd_t < *t){
-		// run will be finshed, may or may not used up all the time 
-		// reduce timer
-		// update wk_front mv to cpQ
-		*t -=run.rmnd_t;
-		run.rmnd_t=0;
-		move_to_complete();
-	}
-	else{
-		// run will not be finshed 
-		// set timer to zero
-		run.rmnd_t -= *t;
-		*t = 0;
-
-	}
-
 	// update wait time for all ps 
 	// wether *t is 0 or not, 
 	// cpu have worked Q-*t by now 
-	for(int i = wk_front+1;i<=wk_end;i++){
-		workingQ[i].wait_t+=(Q-*t);
+	// then work with the front 
+	// this must occured after t updated but before workingQ order changed 
+	Process run = workingQ[wk_front];	
+	if(run.rmnd_t == *t){
+		// use all the time and 
+		// run finished 
+		// set timer to zero
+		// mv the cur to finshQ 
+		// mv_to_fin automatically update wk_front, cp_end, and size 
+		run.rmnd_t -= *t;
+		run.cmpt_t += *t;
+		*t = 0;
+		workingQ[wk_front] = run;
+
+		for(int i = wk_front+1;i<=wk_end;i++){
+			workingQ[i].wait_t+=(Q-*t);
+		}
+
+		move_to_finish();
 	}
+	else if(run.rmnd_t < *t){
+		// not used up all the time 
+		// run finshed, 
+		// reduce timer
+		// update wk_front mv to cpQ
+		// mv_to_fin automatically update wk_front, cp_end, and size 
+		*t -=run.rmnd_t;
+		run.cmpt_t += rmnd_t;
+		run.rmnd_t=0;
+
+		for(int i = wk_front+1;i<=wk_end;i++){
+			workingQ[i].wait_t+=(Q-*t);
+		}
+
+		move_to_finish();
+	}
+	else{
+		// used all the time 
+		// run will not be finshed 
+		// set timer to zero
+		// call updateQ() to update wkfornt and wk_end
+		run.cmpt_t += *t;
+		run.rmnd_t -= *t;
+		*t = 0;
+
+		workingQ[wk_front] = run;
+		/* can not make update wait time compressed, must repeat 3 times in each case */
+
+		for(int i = wk_front+1;i<=wk_end;i++){
+			workingQ[i].wait_t+=(Q-*t);
+		}
+
+
+		updateQ();
+	}
+	// not used all the time and not finsihed case does not exist 
 }
 
-void move_to_complete(){
-	;
+void move_to_finish(){
+	// moving current wk_front into cp_end
+	// update wk_front+=1
+	// size--
+	if(size <=0){
+		cout << "move_to_fin : error" << endl;
+		exit(1);
+	}
+	finishQ[cp_end++]=workingQ[wk_front++];
+	size--;
 }
 
 
 void print(Process p){
 	cout << "{" << '\t' ;
-	cout << "\t" << p.brst_t << "\t"; 
-	cout << "\t" << p.cmpt_t << "\t"; 
-	cout << "\t" << p.rmnd_t << "\t"; 
-	cout << "\t" << p.wait_t<< "\t"; 
+	cout << p.brst_t << " "; 
+	cout << p.cmpt_t << " "; 
+	cout << p.rmnd_t << " "; 
+	cout << p.wait_t << " "; 
 	cout << "}" << endl;
 
 

@@ -1,0 +1,5 @@
+rrobin.cpp: In function ‘void cpu(int*)’:
+rrobin.cpp:214:17: error: ‘rmnd_t’ was not declared in this scope; did you mean ‘rand_r’?
+  214 |   run.cmpt_t += rmnd_t;
+      |                 ^~~~~~
+      |                 rand_r
