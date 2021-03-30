@@ -26,6 +26,7 @@ void cpu(int *);
 void print(Process p);
 void updateQ();
 void move_to_finish();
+void print_header();
 
 //step 0 prep for the queue 
 Process workingQ[MAX];
@@ -126,7 +127,7 @@ int main(){
 
 	// test rrobin()
 
-	if( test==1){
+	if( pass==1){
 		cout << "size : "<< size << endl; 
 
 		cout << "workingQ before rrobin: "<< endl; 
@@ -149,6 +150,17 @@ int main(){
 	}
 
 	//step3 report the result 
+	rrobin();
+	double total_wait = 0;
+	for(int i=0; i < cp_end; i++){
+	total_wait+=finishQ[i].wait_t;
+	}
+	cout << "average wait time: "<< total_wait/(double) ps_num << endl; 
+
+	print_header();
+	for(int i=0; i < cp_end; i++){
+		print(finishQ[i]);
+	}
 	return 0;
 }
 
@@ -167,7 +179,7 @@ void rrobin(){
 		while(timer > 0){
 			// when still have timer left, let cpu working with the front of the queue 
 
-			if( test ==1){
+			if( pass==1){
 				cout << "size:" << size << " timer:" << timer << " front:";
 				for(int i= wk_front; i<=wk_end; i++){
 					print(workingQ[i]);
@@ -273,11 +285,23 @@ void move_to_finish(){
 
 void print(Process p){
 	cout << "{" << '\t' ;
-	cout << p.brst_t << " "; 
-	cout << p.cmpt_t << " "; 
-	cout << p.rmnd_t << " "; 
-	cout << p.wait_t << " "; 
+	cout << p.brst_t << "    "; 
+	cout << p.cmpt_t << "    "; 
+	cout << p.rmnd_t << "       "; 
+	cout << p.wait_t << "   "; 
 	cout << "}" << endl;
+
+
+}
+
+void print_header(){
+	cout << "{" << '\t' ;
+	cout << "burst" << " "; 
+	cout << "run"   << " "; 
+	cout << "remind"<< " "; 
+	cout << "wait " << " "; 
+	cout << "}" << endl;
+
 
 
 }

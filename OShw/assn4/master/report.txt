@@ -1,0 +1,42 @@
+
+“I confirm that I will keep the content of this assignment confidential. I confirm that I have not received any unauthorized assistance in preparing for or writing this assignment. I acknowledge that a mark of 0 may be assigned for copied work.” + SHIYI LIU 110027977
+
+
+Report: 
+ 
+Run: 
+  The program namely a.out is run by the cmd:
+  ./a.out < input
+  The result of the output will be displayed.
+
+Input: 
+  input file contain n+1 line of integers
+  first line contain the number of total ps 
+  The line 2 - n+1 contains the burst time of each process. 
+  
+Output: 
+  The output first contain the calculated weighted wait time for all ps. 
+  Then it display the ps and its details, including its designed burst time, actual run time, reminder time and wait time, as they were first recieved by the scheduler. 
+  Then it display the same information when the scheduler had finished all the work, in the order which they were finished. 
+  see output.txt
+
+Source Code: 
+  see file scheduler_minic.cpp
+  complie it with g++ 
+
+Snapshot: 
+  see file "runtest.jpg"
+
+Implementation: 
+  details see comments inside source code. 
+  main idea: 
+	1. instead of simply calcualte average waited time, I created a real scheduler mimic the round robin scheduler. 
+	2. it create a ps table named struct Process {
+  brst_t -> expected burst time of each process
+  cmpt_t -> record the act cpu use time 
+  rmnd_t -> how many reminder time it left
+  wait_t -> actualy wait time while in Q
+}
+	3. rrobin() function mimic the real sheduler's action, schedule each ps to run a given time quant. 
+	4. on each schedule/content switch, info inside the ps table was update. 
+

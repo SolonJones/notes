@@ -1,0 +1,11 @@
+ps start in oder: 
+{	burst run remind wait  }
+{	24    0    24       0   }
+{	3    0    3       0   }
+{	3    0    3       0   }
+average wait time: 5.66667
+ps finsihed in oder: 
+{	burst run remind wait  }
+{	3    3    0       4   }
+{	3    3    0       7   }
+{	24    24    0       6   }
