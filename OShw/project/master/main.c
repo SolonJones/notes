@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
     }
 
     int ret, vm, page_num, offset, frame_num, pm;
-    char value;
+    signed char value;
 
     for(int i=0; i<1000; i++){
         ret = fscanf(fs_input,"%d",&vm);
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]){
                 printf("something wrong during reading bin");
                 exit(3);
             }
-            printf("virtual mem:\t%d, physical mem:\t%d, value:\t%d\n",vm,pm,(int)value);
+            printf("virtual mem: %d,\tphysical mem: %d,\t value: %d\n",vm,pm,value);
 
         }
     }
