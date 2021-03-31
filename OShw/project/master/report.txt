@@ -1,0 +1,77 @@
+“I confirm that I will keep the content of this assignment confidential. I confirm that I have not received any unauthorized assistance in preparing for or writing this assignment. I acknowledge that a mark of 0 may be assigned for copied work.”
+
+SHIYI LIU
+110027977
+
+
+
+Project Report
+
+--------------
+Implmentation:
+
+  The source code is divide into 3 parts:
+    1. main.c
+    2. functions.c
+    3. page.h
+
+  As name suggested,
+    1. the main actions located in main.c;
+    2. all actions related to translate virtual memory were placed collectively inside the functions.c file.
+    3. page.h file include all the declearation and global var for both to use.
+
+  To see further detail, refer to the comments inside the source code.
+
+  Here discribe the geneal flow of action inside main():
+
+    1. open 3 file stream for read and write
+    2. fs_input is used with fscanf() to read virtual addr
+    3. enter into loop
+        3.1 call getPageNum() to get page number
+        3.2 call getOffset() to get page offset
+        3.3 call getFrameNum()
+            3.3.1 if page fault occured, handle by call pageFault()
+            3.3.2 if page hit, fetch frame number from page table
+        3.4 call getPhyAddr() to combine frame number and offset
+        3.5 call fetchValue() to use physical addr get signed char value, which use fs_bin to read disk.
+        3.6 call fprintf() with fs_out to print the result to result.txt file
+    4. complete all 1000 loop
+    5. call stats() with fs_out to print statistic to result
+    6. close all file stream
+    7. end
+
+
+
+----------------
+Run:
+  Complie the source code by:
+  $ gcc main.c functions.c
+
+  Run the executable by:
+  $ a.out address.txt
+
+
+
+----------------
+Input:
+  input use address.txt file as argumet
+
+--------------
+Output:
+  output was store automatically inside result.txt file
+
+
+--------------
+Statistics:
+  each page miss will trigger pageFault() function call, which will update global variable page_fault.
+  calculate the rate by page_fault/total_mem
+  see acutaly value at the end of result.txt
+
+--------------
+Comment:
+  1. pageTable is a array of struct Entery
+  2. Entry is a struct include page number, frame number and validity
+  3. if validity is not set to true, it is a page miss. Must call pageFault() to handle it.
+  4. if validity is already set to true, it is a page hit. return frame number from the Entry.
+
+
