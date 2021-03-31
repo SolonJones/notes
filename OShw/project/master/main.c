@@ -1,6 +1,4 @@
 #include"page.h"
-#include<stdio.h>
-#include<stdlib.h>
 #define DUMMY "BACKING_STORE.bin"
 
 // this is the complete program 
@@ -23,6 +21,14 @@ int main(int argc, char* argv[]){
     int ret, vm, page_num, offset, frame_num, pm;
     signed char value;
 
+    // run a 1000 loop to 
+    // 1. fetch page numer from vir addr 
+    // 2. fetch offset from vir addr 
+    // 3. search pageTable for frame num 
+    // 4. if page fault, handle it, then repeat 3 
+    // 5. translate frame num and offset to phy addr
+    // 6. fetch value from .bin file 
+    // 7. print statistics 
     for(int i=0; i<1000; i++){
         ret = fscanf(fs_input,"%d",&vm);
         if(ret !=1){
@@ -30,8 +36,6 @@ int main(int argc, char* argv[]){
             exit(2);
         }
         else{
-            // do the whole testing here 
-
             page_num = getPageNum(vm);
             //               printf("get page_num %d\n",page_num);
             offset = getOffset(vm);
@@ -42,21 +46,16 @@ int main(int argc, char* argv[]){
             //            printf("get pm %d\n",pm);
             //           printf("expectd pm 285 \n");
             //          printf("--------------\n");            
-        
-            fseek(fs_bin, vm, SEEK_SET);
-            ret = fread(&value,sizeof(value),1,fs_bin);
-            if(ret !=1){
-                printf("something wrong during reading bin");
-                exit(3);
-            }
-            printf("virtual mem: %d,\tphysical mem: %d,\t value: %d\n",vm,pm,value);
-
+            value = fetchValue(fs_bin,vm);
+           printf("virtual mem: %d,\tphysical mem: %d,\t value: %d\n",vm,pm,value);
         }
     }
 
-
     fclose(fs_input);
     fclose(fs_bin);
+
+    // call stats() to print statistic of this run 
+    stats();
     return 0; 
 
 }

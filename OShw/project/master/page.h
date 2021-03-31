@@ -1,4 +1,6 @@
-
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
 
 int getPageNum(int);
 
@@ -10,3 +12,6 @@ void pageFault(int);
 
 int getPhyAddr(int, int);
 
+signed char fetchValue(FILE*, int);
+
+void stats();

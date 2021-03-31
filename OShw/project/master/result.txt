@@ -998,3 +998,7 @@ virtual mem: 8940,	physical mem: 46572,	 value: 0
 virtual mem: 9929,	physical mem: 44745,	 value: 0
 virtual mem: 45563,	physical mem: 46075,	 value: 126
 virtual mem: 12107,	physical mem: 2635,	 value: -46
+process 1000 virtual memeory 
+page fault 244
+rate of fault 0.244000
+ 
