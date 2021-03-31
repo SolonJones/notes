@@ -57,8 +57,8 @@ signed char fetchValue(FILE* fs_bin,int vm){
    return v; 
 }
 
-void stats(){
-    printf("process %d virtual memeory \n", MAX);
-    printf("page fault %d\n", page_fault);
-    printf("rate of fault %f\n ", (float)page_fault/MAX);
+void stats(FILE* fs_out){
+    fprintf(fs_out,"process %d virtual memeory \n", MAX);
+    fprintf(fs_out,"page fault %d\n", page_fault);
+    fprintf(fs_out,"rate of fault %f\n ", (float)page_fault/MAX);
 }

@@ -14,4 +14,4 @@ int getPhyAddr(int, int);
 
 signed char fetchValue(FILE*, int);
 
-void stats();
+void stats(FILE*);

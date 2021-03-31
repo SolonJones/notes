@@ -1,5 +1,6 @@
 #include"page.h"
 #define DUMMY "BACKING_STORE.bin"
+#define OUT "result.txt"
 
 // this is the complete program 
 
@@ -12,6 +13,7 @@ int main(int argc, char* argv[]){
 
     FILE* fs_input = fopen(argv[1],"r");
     FILE* fs_bin = fopen(DUMMY,"r");
+    FILE* fs_out = fopen(OUT, "w");
 
     if(fs_input <0 || fs_bin <0 ){
         printf("something wrong when opening file");
@@ -47,15 +49,18 @@ int main(int argc, char* argv[]){
             //           printf("expectd pm 285 \n");
             //          printf("--------------\n");            
             value = fetchValue(fs_bin,vm);
-           printf("virtual mem: %d,\tphysical mem: %d,\t value: %d\n",vm,pm,value);
+           fprintf(fs_out,"virtual mem: %d,\tphysical mem: %d,\t value: %d\n",vm,pm,value);
         }
     }
 
+    // call stats() to print statistic of this run 
+    stats(fs_out);
+
     fclose(fs_input);
     fclose(fs_bin);
+    fclose(fs_out);
 
-    // call stats() to print statistic of this run 
-    stats();
+
     return 0; 
 
 }
