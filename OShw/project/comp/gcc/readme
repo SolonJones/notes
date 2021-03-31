@@ -1,0 +1,41 @@
+this file test split code into mutiple pieces and complie them togather 
+
+main.c is the drive file 
+in order to use the file hello.c later, include
+: include"hello.h"
+
+hello.h is the header file 
+: the declearation of void hello(str);
+
+function is in hello_fn.c file 
+: include"hello.h"
+: include<stdio.h>
+: function defination 
+
+------------------------
+we know above works : 
+rules: 
+	1. function.h must match function name
+
+
+
+
+-------------------------
+
+test:
+main : header local.h function_name local()
+header: declare local()
+hello.c: define local()
+
+still works: the file name of fucntion.c is not important 
+what is important is the header name must equal to function name 
+
+
+--------------------------
+
+summary: 
+
+	1. ignore above conclusion
+	2. main.c include "local.h" instruct complier to search declaration inside local.h first when compling the code 
+	3. since hello.c also include local.h, complier can combine them togather when try to solve the defination of void hello(). 
+	4. it has nothing to do with the naming of header file or actual funcitons files. 
