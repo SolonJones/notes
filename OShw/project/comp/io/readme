@@ -1,0 +1,5 @@
+the io is not working 
+
+reading int yield strange number 
+
+using fscanf() with %d will solve the issue 
