@@ -31,4 +31,8 @@ to stop a gdm from runing, use
 sudo systemctl stop gdm3.service 
 the only problem is current ttyX after logout will be un-usable and must change tty by using ctl+alt+ Fx(1,2,3...) 
 
+-----------------------------
+sudo hdparm -I /dev/sda 
+ to check the hardware disk info 
+
 
