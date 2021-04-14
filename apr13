@@ -1,0 +1,27 @@
+file name and wild card: 
+
+brace expansion: 
+
+echo b{ed, olt, ar}s
+-> brace expasnion expands to an arbitary string of a given form. 
+-> within the brace, the comma seperated string will be in order combined with the string outside of the brace . 
+-> string outside the {} called prescirpt and postscript 
+-> brace {} can even nestede brace, produce m*n total combination 
+
+echo b{1..2} 
+echo 1{h..a}
+->
+b1 b2 b3 b4 b5 b6 b7 b8 b9
+
+
+cat file 
+cat < file 
+-> are the same 
+
+
+sort < file 
+
+cat < file1 > file2 
+cp file1 file2
+
+redirection with > is in linear fashion
