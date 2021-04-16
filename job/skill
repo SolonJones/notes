@@ -1,0 +1,25 @@
+catagorize redhat: 
+
+user: setup modify and support user, user disk quota
+system: scheduling system task, auto backup and restoring files 
+hardware: configuring hardware, monitor cpu usage/disk space 
+security: syslog, klog, firewall 
+
+language: c, c++, core-java, python, bash 
+ 
+cerficication: poci in working process
+----------------------------------------
+
+
+user support: control user account with /etc/password 
+
+general system: manging file system, disk usage, monitor cpu, scheduling system task with batch/cron, scrips for auto backup and restoration
+
+configureing hardware: run-level script, loadable modules 
+
+security: log files, configre firewall with iptanles, control service access with tcp wrapper, monitor network traffic with wireshark `
+
+
+
+
+
