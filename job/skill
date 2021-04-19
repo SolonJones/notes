@@ -24,22 +24,17 @@ security: log files, configre firewall with iptanles, control service access wit
 --------------------
 
     • SKILL TOPIC 1 (e.g.: Software Engineering or Warehouse Management): Skill 1 | Skill 2 | Skill 3 ...
-    • SKILL TOPIC 2: Skill 1 | Skill 2 | Skill 3 | Skill 4 | Skill 5…
-    • SKILL TOPIC 3: Skill 1 | Skill 2 | Skill 3 | Skill 4 …
-
-    • ACCOMPLISHMENT 1: [Action verb] [brief explanation of accomplishment] resulting in [quantifiable outcome. Using %, $, etc. will draw the eye and make an impact]
-    • ACCOMPLISHMENT 2: ...
-    • ACCOMPLISHMENT 3: ...
-
 
 
 ---------------------
 
-    Server: commandline enviroment
+    Server envitoment: working in run level 3 enviroment 
 
-    User administration: various command associate with /etc/passwd such as useradd, userdel, sudoer... 
+    User administration: stadndard user support commands such as useradd, usermod, userdel, passwd and chage. Or directly working with /etc/passwd, /etc/sudoer. 
 
-    File system: managning mounted file system, disk qouta and other /etc/fstab related work. 
+    File system: managning mounted file system, disk qouta, RAID and NFS. working with commands associate with /etc/exports, /etc/fstab, /etc/matb, including fdisk, mount, mkfs, dmraid, fd, du, and find. 
     
-general system: manging file system, disk usage, monitor cpu, scheduling system task with batch/cron, scrips for auto backup and restoration
-    general system administration: 
+    general system monitorying: monitor cpu usage, disk usage, power consumption, and log informaiton with commands like top, htop, apm, and files like /var/sys.log 
+
+    Hardware and Kernel: add/remove loadable moduler and with lsmod, modinfo, modprobe and rmmod. Wroking with hardware mangaement command like hal or kuzud 
+
