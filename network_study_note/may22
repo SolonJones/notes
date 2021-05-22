@@ -1,0 +1,85 @@
+05/22/21 13:19
+
+Topic A 
+
+osi : open system interconnection mdoel 
+network : node+link
+LAN : directly linked nodes
+WAN : connected LAN 
+OSI : 7 layer 
+protocol : structed format 
+addressing: locate 
+encapsulation : payload abstraction 
+encapsulation : header + payload 
+peer layer : protocol running at same layer 
+same layer interaction : communication bewteen nodes 
+adjacant layer interaction: service user and provider 
+protocol data unit (pdu) : encapsulation process 
+------------------------------------------------
+layer 1 : transmision on physical segment 
+node : any device with network interface 
+station : any node on wireless network 
+host : end device 
+link : physical media 
+(physical) segment : all nodes which same the same link 
+device : transceiver, repeater, hubs, media converter, modems 
+transceiver: ? 
+repeater : amplifier on media 
+hubs : multiport repeater 
+media converter : convert signal type 
+modems : special converter for digial-analog
+------------------------------------------------
+layer 2 : transmision on logical segement 
+data link layer : layer 2 
+local address : hardware address 
+hardware address : address used to identify host on local network 
+local network : linked by 1 or more central nodes 
+logical segement : node can sent data to another node (via central node)
+local network == logical segement 
+logical topology : layer 2 segement include mutile layer 1 segements
+frame: unit in layer 2 
+frame = dest + srcs + plod + erck 
+payload : network packet 
+header : dest + srcs 
+error check : trucate check / corruption 
+* media access method : how nodes can share media 
+contention : ? 
+ring based topology : 
+device : adapters, NIC, bridges, switch, APs
+network interface : NIC 
+adapter : NIC 
+NIC : assembling / disasembling frames for host and network media
+bridge : stacks of NIC on each port to link central nodes 
+switch : advanced bridge with better traffic control 
+APs : wireless access point 
+wireless access point : bridge for wired and wireless nodes  
+MAC : media access control 
+* media access control : physical segment control (1) 
+LLC : logical acess control 
+logical access control : standard network-layer (3) service interface 
+pdu : frame 
+
+-----------------------------------------------
+
+layer 3 : moving data around a network of network (internet)
+logical network : 
+host id : 
+router :
+pdu : packet 
+packet : unit in layer 3 
+device : router, layer 3 switch 
+wan router : router connect to internet 
+router : wan router - subnet 
+subnet : segement (1)
+backbone : link between subnet's central node and router 
+
+
+--------------------------------------------
+layer 4 : moving frame and datagram between nodes and networks 
+transport layer : end 2 end, host to host layer 
+port number : identify application 
+segments : unit in layer 4 
+pdu : segments 
+multiplexed : host transmitting mutiple packet(?) at same time 
+reliable data delivery : 
+
