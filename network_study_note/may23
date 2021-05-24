@@ -1,0 +1,356 @@
+05/23/21 09:54
+
+===============
+continue review 
+===============
+
+
+layer 5 : session layer
+session layer : dialog contorl funciton 
+session : dialog 
+dialog : client and server need to exchange multiple msg to complete a task
+client : info sender 
+server : info responder 
+simplex : one system send, the other recieve 
+half duplex : 2 host take turn to exchange msg 
+duplx : both hosts can send msg at any time 
+
+summary : session layer is created to control complex msg exchange between 
+hosts for a single task. 
+
+-------------------------------
+
+layer 6 : presentation 
+presentation : transform, cncryption, compression 
+
+summary: since applicatin data is encapuslated in payload, presentaion is just ot make sure char conversion is correct. 
+
+
+-------------------------------
+
+layer 7 : application 
+application : interface for program and network host for communicate 
+API : interface between network function and programmer 
+NDIS : network driver interface specification 
+NDIS : functions at data link layer 
+Socket API : fucntions at transport / session layer 
+High level API : transfer, email, web, Name resolution 
+
+-------------------------------
+
+
+===================
+topic B 
+Tcp/Ip suite 
+===================
+
+
+protocol suite : collection of protocols 
+TCP/Ip : 4 layer conceptual model 
+
+application : dhcp bootp dns ftp http url imap smtp telnet snmp ssl tls 
+transport : udp tcp 
+internet : ip ip-icmp ip-arp 
+link : ppp pptp l2tp ethernet wifi 
+
+
+
+----------------------
+
+link layer : equivalent of OSI physical + data link 
+link layer : hardware + software 
+hardware : lan base + wan based 
+lan based : ethernet wifi 
+wan based : t-carrier isdn dsl 
+in pdu : packet 
+out pdu : bytes 
+
+---------------------
+
+internet layer : adderssing, routing, framenting 
+addressing : identify host 
+?? in pdu : frame 
+out pdu : packets 
+
+
+---------------------
+
+transport layer : host ot host layer 
+port : indetify application 
+in pdu : ? 
+out pdu : segments 
+
+--------------------
+
+application layer 
+
+high level protocol : tcp/ip service 
+
+
+
+
+==================
+network defination: 
+
+-----------------
+
+circuit : dedicated direct channel for host to host, permenetly exist 
+
+circuit switch path : semi circuit, router negotiate path, once after establishement, it become a circuit for dedicate commonication 
+
+
+packet switching : no dedicate path, no permenent route, go through any availanle path 
+
+packet swithching : ARPA's test net to connect lan point to point, later the basic protocol for internet 
+
+
+
+=======
+traffic 
+
+
+----------------------------
+media type and access method 
+
+transmission medium : physical channel signal travels 
+nounded media : cable fiber 
+unbounded media : microwave 
+
+digital signal : line coding 
+line coding : discret pulse 
+discret pulse : binary pulse 
+analog signaling : smooth sine wave 
+modulation scheme : convert analog signalling to digital signaling 
+sampling : intervals of analog wave counted as 1 or 0 
+
+
+bandwith : property of transmission medium 
+bandwith : range of frequencies available for communication 
+baseband transmission : the whole bandwith 
+time based acess : divded baseband accroding to time 
+frequency based acess : divided accroging to frequency 
+
+channel capacity : bandwith 
+hertz : number of signal cycle complete per second 
+
+channel capacity : max herz - min herz 
+
+bandwith : used for data rate, data transffered per second (liberal usage)
+
+baud : number of symbols tranmistted per second 
+symbol : series of event in signal transmitting 
+symbol : a high voltage 
+symbol : transition from peak to trough 
+
+
+bit rate : amount of bits per seconds 
+bit : encode into symbol, one or more 
+
+data rate : combination of signalling speed (baud) and encoding method 
+
+
+summary : 
+bandwith physical : property of medium , determined by channel capacity 
+channel capacity : max hert - min herz 
+baud : number of symbol pe sec 
+symbol : signal unit can be encodede 
+bit : encode symbol 
+bit rate : number of bit transmitted 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+05/23/21 14:48
+
+given data rate over distance : medium property 
+attenuation : loss of signal strength db
+noise : unintended signals SNR 
+
+
+---
+omit content: 
+copper cable 
+fiber optic cable 
+wireless radio 
+---
+
+
+meida access control : when a node can use shared medium 
+media access control : controlled + contention-based 
+controlled : deterministic access 
+controlled : central device / system determin when/how long a node access 
+contention based : node compete within in collision domain for access 
+collision doamin : connected via hub or same valbe segment 
+collision domain : same physical segment 
+broadcast domain : bridge link 2 or more collision domain 
+broadcast domain : with forward capacity 
+
+CSMA: carrier sense multiple access protocol 
+CSMA: a type of ethernet protocol 
+carrier sense : detect acitity on medium 
+multiple access : multiple node using same medium 
+
+CSMA/CD : CSMA with collision detection 
+CSMA/CA : CSMA with collision avoidance 
+
+collision detection : interface detect if preamble signal and data co exist on the line
+jam signal : interface broadcast signal to let node wait 
+backoff : a pre-determined wait time 
+preamble : a controll signal testing 
+
+
+collision avoidance : node send request to sned to lock-in access 
+
+
+contension-based : protocol not control function
+switch network : migrate control funciton to switches, which work as central node
+switch network : each port link to a collision domain 
+
+------------------
+broadcast domains
+
+unicast : traffic addressed by sender to recipient 
+broadcast : traffic addressed to multiple recipient 
+boardcast domain : nodes share same boradcast address 
+
+
+collision domain : seperated by bridge / switch (forward ability) 
+broadcast domain : seperated by router (not forward broadcast)
+
+
+VLAN : virtaul locla area network 
+VLAN : use configuration to connect 2 or more layer2 broadcast domain via layer3 to form a virtual local area network 
+
+
+05/23/21 15:46
+
+
+
+=================
+ethernet protocol 
+=================
+
+ethernet protocol : developed to enable local network via many media 
+ethernet protocol : baseband signaling and CSMA/CD 
+
+pdu : ethernet frame 
+format : preamble 	sfd	dest_mac	srcs_mac	ether_type	payload 	FCS 
+
+
+preabme : CSMA/CD protocol and colck synchornixation, 8 byte 
+SFD : same, ? byte 
+un-captured : preamble + SFD 
+MAC : identifier for network adpter interface, 48 bits=6 byte 
+
+
+
+05/23/21 17:04
+
+-------------
+continue ...
+
+? payload size : 2 byte field define -> 4 hex number 
+ehter_type : 2 byte field used to indeicate payload type 
+ether_type : 0x0800 ip4, 0x86DD ip6, apr ?, icmp ? 
+
+CSMA/CD size mandate : 64 byte 
+payload size mandate : 46 byte 
+padding : redundant data 
+jumbo frame : non standard protocol 
+
+FCS : frame check sequence 
+CRC : cyclic redundancy check 
+FCS = CRC 
+CRC : checksum payload 
+
+------------------------
+Ethernet standard 
+
+naming : xBASE-y 
+x : bit rate in Mbps / Gbps 
+base : signal mode 
+signal mode : baseband or broadband 
+y : designator for media type 
+y : medium matetrial type 
+y : 
+	T for twisted copper, 
+	UTP unshielded twisted pair, 
+	SMF for single mode fiber, 
+	MMF for multiple mode fibe
+
+---------------------
+omit fast ethernet 
+omit gigbit ethernet 
+
+
+
+============================
+configure and monitor network 
+============================
+
+network adapter : transceiver connect node to medium 
+NIC : network adapter 
+NIC : OSI conceptually organize frames and provide hardware address 
+hardware address : each ethernet port have unique one 
+hardware address : MAC address 
+hardware address : EA = ethernet address 
+hardware address : EUI = extended unique identifier 
+
+burned in address : OUI + serial number 
+OUI organizationally unique identifier, 3 byte 
+serial number : 3 byte 
+
+locally administered address : replace OUI 
+U/L bit : control local/universal adress identifier 
+LG bit : U/L bit 
+LG bit : hiding inside mac address 
+
+IG bit : control broadcast or unicast 
+IG bit : hiding inside mac address 
+
+
+---------------------------
+address resolution protocol 
+
+ARP : converting an IP address to hardware address 
+ARP : when local ip is used, MAC need to be found 
+ARP : 
+	0.host determin ip is within broadcast domain 
+	1.src check ARP table cache for MAC 
+	2.if not, ARP broadcast request onto network 
+	3.local segment who has the ip respond with its MAC 
+	4.host update ARP table 
+	5.estblish communication 
+
+	1.host determin ip is private but not in broadcast domain 
+	2.check APR table for default gateway (router)
+	3.if not repeat 3-5 establish connection with router 
+
+
+05/23/21 18:10
+
+
+
+
+
+
+05/23/21 20:32
+
+continus... 
+
+
+promiscuous mode : allow NIC to capture all packet, even not intend to the host
+configured spanning port : mirror port 
+mirror port : a port on switch allow host to monitor other port activity 
+
+

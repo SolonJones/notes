@@ -1,0 +1,109 @@
+Mon 24 May 2021 09:17:08 AM EDT
+
+
+=====
+hubs
+=====
+
+
+hubs : multiport repeater 
+hubs : central of collision domain 
+hubs : half-deplex CSMA/CD 
+hubs port : Rx + Tx 
+hubs : 
+	1. host send frame on Tx1 -> hubs 
+	2. hubs port Tx1 recieve 
+	3. hubs regenereate n-1 on ports Rx(2~n) 
+	4. hosts(2~n) recieve on Rx 
+crossover : connect 1 hub Rx to another Tx with cable 
+
+! : fast ethernet can only use 2 hubs max 
+
+hubs : no configuration 
+
+
+
+======
+bridge
+======
+
+bridge : segment the network 
+bridge : use laye2 MAC address 
+bridge : central of broadcast domain 
+bridge : connect collision domain 
+flood : only if MAC table has no record 
+port : connect to hub or a bus_line of hosts 
+MAC table : 1 port - 2 or more address 
+
+================
+ethernet switch
+================
+
+
+ethernet switch : similar to bridge 
+ethernet swtich : larger MAC table 
+port : connect to signle host 
+MAC table : 1 port - 1 MAC address 
+collision : only if port ooperate on half-duplex, collide with itself
+MAC table : made by content addressable memory 
+CAM : content addressable memory 
+CAM table : MAC table 
+
+
+switch brands : 
+	1. cisco 
+	2. HP 
+	3. Huawei 
+	4. uniper 
+	5. Arista 
+	6. Linksys 
+	7. D-link 
+	8. NetGear 
+	9. Nec 
+
+switch types : 
+	1. managed 
+	2. unmanaged 
+	3. stackable 
+	4. modular 
+	5. fixed 
+	6. desktop 
+	7. rack-mounted 
+
+
+autonegotiate : switch port automatically negatioate conneciton mode with host 
+
+
+port monitor : switch allow forward and monitor 
+
+
+switching loop : flooded frame circulate network perpetially 
+
+broadcast strom : same 
+
+STP : spaning tree protocol 
+STP : organize layer 2 device into hierarchy 
+STP : {ID priority, MAC}
+BPDU : bridge protocol data unit 
+BPDU : frame used by STP to identify each port on each bridge 
+bridge : most commonly used layer 2 device (replaced by switch)
+root bridge : lowest id, faster backbone speed 
+root port : any port (on non-root bridge) that connect(direct/indirect) to root bridge 
+root port : port on regular bridge and link to root bridge 
+designated port : port link to down stream network without loop 
+designated port : port on root bridge link to regular bridge 
+blocking port : port created a loop 
+non-designated port : blocking port 
+* see pic on page 52
+
+port state : 
+	1. bloakcing 
+	2. listing 
+	3. learning 
+	4, forwarding 
+	5. disabled 
+
+converged : all ports on all bridge are in forwarind or blocking states 
+
+RSTP : rapid STP 
+

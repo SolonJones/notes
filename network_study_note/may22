@@ -65,6 +65,7 @@ layer 3 : moving data around a network of network (internet)
 logical network : 
 host id : 
 router :
+datagram : packet 
 pdu : packet 
 packet : unit in layer 3 
 device : router, layer 3 switch 
@@ -83,3 +84,7 @@ pdu : segments
 multiplexed : host transmitting mutiple packet(?) at same time 
 reliable data delivery : 
 
+
+
+--------------------------------------------
+continue on may23
