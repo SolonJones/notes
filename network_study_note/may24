@@ -107,3 +107,154 @@ converged : all ports on all bridge are in forwarind or blocking states
 
 RSTP : rapid STP 
 
+
+
+
+Mon 24 May 2021 04:13:24 PM EDT
+
+RSTP : discarding = blocking + listening + disable 
+BPDU : 
+
+==============================
+this section is cisco specific 
+==============================
+access port : port on bridge/swtich connect to host 
+topology change : when bridge added, repalced, remvoed, the core network topology change. access port remind same 
+portFast : Cisco configuration prevent access port flush caused by core topology changed 
+edgePort : non core port 
+BPDU guard : cmd a port to act portFast 
+BPDU filter : drop all BPDU frame 
+Root guard : prevent a switch to become root or root core group 
+
+! confustion in ventor naming convention and virtual switch naming 
+
+
+
+
+=========
+PoE
+========
+
+POE : power over ethernet 
+poe : supply power on ethernet 
+802.3af : 13W 350mA @ 48V
+802.3af+ : 25W 600mA
+PSE : power sourcung equipment 
+power injector : enable ehternet switch convert to power 
+
+
+
+=======================
+compare topology 
+======================
+
+
+topploly : physical + logical 
+physical : node connection with mediam physically 
+logical : flow of data via network 
+
+point to point link : between 2 nodes, phycical or logical 
+
+
+pysical bus : 2+ nodes share access media 
+cable taps : link node onto a shared media 
+terminator : at each end of bus 
+repeater : connect 2 bus for long distance 
+T ---- N -----N ------T 
+
+
+logical bus : one node data is reachable to all other connect nodes, regardless of physical topology 
+physical star : end nodes connect to central node 
+hub and spoke : same as star 
+
+pysical star - logical bus : central node use hub 
+physical star - logical star : central node use bridge or switch 
+
+physical ring : 
+
+A--- B 
+|    |
+C--- D 	
+
+
+Token ring : ? 
+
+meth : each device have end to end with all other device 
+meth : partial mesh is used in reality 
+parital mesh : subnet partial mesh with each other 
+
+
+
+
+===========================
+network types lan wan etc ..
+===========================
+
+
+LAN : practically defiend by geolocation 
+LAN : wide range 
+LAN : 
+	1. residentail network
+	2. soho 
+	3. sme : small medium enterprise 
+	4. enterprice 
+	5. CAN : campust area network 
+	6. WLAN : wireless LAN 
+	7. hotspot : open WLAN 
+	8. SAN : storage area network
+
+WAN : link LAN 
+WAN : leased network device and link 
+
+internet : world wide WAN on tcp/ip 
+intranet : closed WAN or LAN 
+extranet : parital open intranet 
+
+PAN : use bluetooth or other medim 
+WPAN : wireless PAN 
+
+scalability : easy add/remove of end nodes and core nodes 
+adaptability : easy upgrade or change of service 
+
+hierarchical model : break down complex network into functional small section 
+distributed switching : common hiearchical model 
+distributed switching : divide by geolocaiton, grouped under access switch. access switch connect to distribution layer,which forward info. 
+
+Cisco model : access -> distribution -> core -> data center 
+
+access layer : connect to end point | connect to distribution layer 
+distribution layer : connect to access layer | to other distribution layer | to the core layer | to data center 
+core layer : to core | to distribution | to WAN router 
+data center : servie as aythentication, addressing , name resolution, application servers, storage 
+
+device : 
+router : layer 3 forward with less port 
+layer3 switch : layer 3 forward with more port 
+aggregation switch : high end layer3 switch 
+top of rack : layer 3 switch for racking up
+
+modular block : at each layer, divide into functional blocks 
+
+SDN : software defiend networking 
+SDN : divide network via planes 
+	1. control plane : how trafiic should be prioritzed and forwarded 
+	2. data planes : handle the actual forwarding and authentication 
+	3. management plane : monitor traffic condition and network status 
+network controller : applicaiton implement control plane onto data planes, using device API  
+
+control plane 
+	| northnound API
+controller   ------------ management  
+	| southnound API 
+     device		
+
+porvisioning : automated deployment of network links 
+
+
+
+=========================================
+chapter 4 ip configuraiton 
+=========================================
+
+
+

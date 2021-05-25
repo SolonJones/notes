@@ -1,0 +1,71 @@
+Tue 25 May 2021 09:08:44 AM EDT
+
+
+================================
+chapter 4 ip configuration 
+================================
+
+
+
+=========
+Topic A 
+
+
+ip : provide logical host, network addr, routing
+layer 3 : ip 
+ip : header + data 
+header : 
+	0 versi 4 headlen 8 dfserv 16 ttllen            31 
+	32 id	  		   48 flag | offset	63
+	64 ttl |   protocol        70 	chcksum		95
+	96 		src addr 			127
+	128		dst addr 			159
+
+	version : ip4 or ip6 
+	head len : 
+	protocol : indeicate payload type tcp(6)  udp(17) ICMP(1) IGMP(2) GRE(47) ESP(50) AH(51) EIGRP(88) OSPF(89)
+		IGMP : internet group messaging protocol with multicasting 
+		GRE : generic routing encapsulation with vpn 
+		ESP : encapsulating secutrity payload for IPSec 
+		AH : authentication header for IPSec 
+		IPSec : encryped ip 
+		EIGRP : enhanced interior gateway rotuing protocol by router 
+		OSPF : open shortest path first 	
+
+	diffserv field : differentiated service code point field 
+	DSCP : differentiated service code point field 
+	diffserv field : priority value for the packet 
+	DSCP : with congestion control for real time communication 
+	
+	TTL : time to live in unit of seconds 
+	TTL : unit of hops in practice 
+	
+	ID : identify if datagram is part of unsplit msg 
+	offset : identify if datagram is part of unsplit msg 
+	flag : will more fragment be following 
+
+
+ip addr structure : network id + host id 
+subnet mast : netmask distinguish networkId and hostId 
+
+octet 		binary 		denary 
+1		1000 0000	128
+2		1100 0000	192
+3		1110 0000	224
+4		1111 0000	240
+5		1111 1000	248
+6		1111 1100	252
+7		1111 1110	254
+8		1111 1111	255
+
+	
+ip routing : use netmask to compare srcip and dstip to determin if on same network
+
+default gateway : ip addr used to route outside on a host 
+default gateway : often the router addr 
+
+
+
+
+
+Tue 25 May 2021 10:41:07 AM EDT
